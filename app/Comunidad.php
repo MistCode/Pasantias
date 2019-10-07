@@ -16,4 +16,9 @@ class Comunidad extends Model
 	{
 	    return 'slug';
 	}
+
+	public function infos()
+    {
+        return $this->hasMany('App\Info');
+    }
 }

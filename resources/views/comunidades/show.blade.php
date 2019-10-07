@@ -20,12 +20,13 @@
 				</div>
 			</div>
 		</ul>
-
 		<ul>
 			<div style="width: 45rem;">
-				
+				<boton></boton>
+				<formulario></formulario>
+				<listando></listando>
 			</div>
-		</ul>	
+		</ul>
 	</div>
 
 	

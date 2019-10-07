@@ -2,4 +2,8 @@
 
 @section('content')
 	
+	<boton></boton>
+	<formulario></formulario>
+	<listando></listando>
+
 @endsection

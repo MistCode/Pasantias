@@ -27,10 +27,10 @@ Vue.component('create-form-person', require('./components/personas/add.vue').def
 Vue.component('contenido-person', require('./components/personas/contenido.vue').default);
 Vue.component('spinner', require('./components/widgets/Spinner.vue').default);
 
-//Vue.component('listando', require('./components/info/Read.vue').default);
-//Vue.component('formulario', require('./components/info/Create.vue').default);
-//Vue.component('boton', require('./components/info/Click.vue').default);
-//Vue.component('content', require('./components/info/contenido-msj.vue').default);
+Vue.component('listando', require('./components/msj/Read.vue').default);
+Vue.component('formulario', require('./components/msj/Create.vue').default);
+Vue.component('boton', require('./components/msj/Click.vue').default);
+Vue.component('edita', require('./components/msj/Msj-edit.vue').default);
 /**
 
 No Eliminar

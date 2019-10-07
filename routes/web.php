@@ -51,7 +51,15 @@ Route::put('/grupos/{grupo}/personas/{id}', 'PersonaController@update');
 Route::delete('/grupos/{grupo}/personas/{id}', 'PersonaController@destroy');
 
 //route info
-Route::resource('info', 'InfosController');
+Route::resource('info', 'MensajeController');
+
+Route::get('/comunidades/{comunidad}/info','MensajeController@index');
+
+Route::post('/comunidades/{comunidad}/info','MensajeController@store');
+
+Route::put('/comunidades/{comunidad}/info/{id}','MensajeController@update');
+
+Route::delete('/comunidades/{comunidad}/info/{id}','MensajeController@destroy');
 
 
 Auth::routes();

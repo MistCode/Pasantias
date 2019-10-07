@@ -1,12 +1,12 @@
 <template>
-	<div class="container">
-			<spinner v-show="loading"></spinner>
-				<contenido-person v-for="(persona, index) in personas"
-				:key="persona.id" 
-				:persona="persona"
-				@updatePersona="updatePersona(index, ...arguments)" 
-				@deletePersona="deletePersona(index)"
-				></contenido-person>
+	<div class="row">
+		<spinner v-show="loading"></spinner>
+						<contenido-person class="col-sm-3 offset-sm-1" v-for="(persona, index) in personas"
+						:key="persona.id" 
+						:persona="persona"
+						@updatePersona="updatePersona(index, ...arguments)" 
+						@deletePersona="deletePersona(index)"
+						></contenido-person>
 	</div>
 </template>
 

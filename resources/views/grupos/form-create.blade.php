@@ -13,6 +13,7 @@
 	</div>
 
 	<div class="form-group row">
+		<label class="col-md col-form-label">Imagen:</label>
 		<div class="file-loading"> 
 		    <input id="input-b1" name="avatar" type="file" class="file" data-browse-on-zone-click="true">
 		</div>
