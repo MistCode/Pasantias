@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.App')
 @section('title','Crear Comunidad Nueva')
 @section('content')
 <div class="card shadow border border-warning" style="margin-top: 30px;">

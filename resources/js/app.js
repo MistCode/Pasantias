@@ -21,7 +21,37 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.component('lista-de-personas', require('./components/personas/list.vue').default);
+Vue.component('modal-button', require('./components/personas/modal-button.vue').default);
+Vue.component('create-form-person', require('./components/personas/add.vue').default);
+Vue.component('contenido-person', require('./components/personas/contenido.vue').default);
+Vue.component('spinner', require('./components/widgets/Spinner.vue').default);
+
+//Vue.component('listando', require('./components/info/Read.vue').default);
+//Vue.component('formulario', require('./components/info/Create.vue').default);
+//Vue.component('boton', require('./components/info/Click.vue').default);
+//Vue.component('content', require('./components/info/contenido-msj.vue').default);
 /**
+
+No Eliminar
+updatePersona: function(persona){
+                let currentRoute = window.location.pathname
+            var url = `http://localhost${currentRoute}/personas/` + persona.id;
+            axios.put(url, {
+              name: persona.name,
+              picture: persona.picture
+            })
+            .then((res) => {
+              console.log(res)
+          this.editMode = false;
+          this.personas[index, 1] = persona
+            })
+                .catch(function(err){
+                    console.log(err)
+                })
+          }
+esto es importante
+
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.

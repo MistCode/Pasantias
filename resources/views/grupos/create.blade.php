@@ -1,19 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.App')
 
 @section('title','Crear Usuario')
 
 @section('content')
 
-<div class="card shadow border border-warning p-5 mb-5" style="margin-top: 30px; width: 50rem; margin-left: 200px;">
+@include('common.errors')
+<div class="card col-md-6 offset-md-2 shadow border border-warning" style="margin-top: 30px;">
+
 	<div class="container">
-		<div class=" col-sm text-center">
-			<h2 style="margin-top: 10px;"><span class="border-bottom">Crear Grupo</span></h2>
+		<div class="col-sm text-center">
+			<h2 style="margin-top: 10px; margin-bottom: 10px;">
+				<span class="border-bottom">Crear Grupo</span>
+			</h2>
 		</div>
 	</div>
 
-@include('common.errors')
-	<div class="row" style="margin-top: 2rem;">
-		<div class="text-center"></div>
+	<div class="row col-md-10 offset-md-2">
 			<form class="form-group" method="POST" action="{{ url('/grupos/create') }}" enctype="multipart/form-data"> 
 			@csrf
 				@include('grupos.form-create')
@@ -21,5 +23,6 @@
 				<a href="{{ url('/grupos') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Regresar</a>
 			</form>
 	</div>
+
 </div>
 @endsection

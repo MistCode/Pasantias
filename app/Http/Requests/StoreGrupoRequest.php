@@ -27,7 +27,7 @@ class StoreGrupoRequest extends FormRequest
             'name' => 'required|max: 15',
             'slug' => 'required',
             'avatar' => 'required|image',
-            'descript'=> 'required|max: 100'
+            'descript'=> 'required|max: 150'
         ];
     }
 }

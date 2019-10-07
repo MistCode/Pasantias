@@ -51,7 +51,7 @@ Route::put('/grupos/{grupo}/personas/{id}', 'PersonaController@update');
 Route::delete('/grupos/{grupo}/personas/{id}', 'PersonaController@destroy');
 
 //route info
-Route::resource('info', 'InformativoController');
+Route::resource('info', 'InfosController');
 
 
 Auth::routes();
