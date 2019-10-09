@@ -74,7 +74,7 @@ class PaginaController extends Controller
         $mostrar = Registro::where('slug','=',$slug)->firstOrFail();
         //dd($mostrar);
         if (Auth::check()) {
-            ;return view('grupos.show', compact('mostrar'));
+            return view('grupos.show', compact('mostrar'));
         } return view('index');
         
     }

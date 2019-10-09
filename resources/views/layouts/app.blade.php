@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="Refresh" content="600; {{ url('/') }}">
+    <meta http-equiv="Refresh" content="1800; {{ url('/') }}">
 
     <title>{{ config('app.name', 'Cacique Maracay') }}</title>
 

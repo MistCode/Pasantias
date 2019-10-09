@@ -1,14 +1,14 @@
 	<div class="form-group row">
 		<label class="col-md col-form-label">Nombre de la Comunidad:</label>
 		<div class="col-md-8">
-			<input type="text" name="name" class="form-control">
+			<input type="text" name="name" value="{{ $dat->name }}" class="form-control">
 		</div>
 	</div>
 
 	<div class="form-group row">
 		<label class="col-md col-form-label">Escribe tu codigo:</label>
 		<div class="col-md-8">
-			<input type="text" name="slug" class="form-control">
+			<input type="text" name="slug" value="{{ $dat->slug }}" class="form-control">
 		</div>
 	</div>
 

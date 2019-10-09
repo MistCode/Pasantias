@@ -63,7 +63,7 @@ class ComunidadController extends Controller
         $dat->save();
 
         if (Auth::check()) {
-            return redirect()->route('comunidades.index');
+            return redirect()->route('comunidades.index')->with('status','Datos Creados Correctamente');
         } return view('index');
     }
 
@@ -115,7 +115,7 @@ class ComunidadController extends Controller
         }
         $dat->save();
         if (Auth::check()) {
-            return redirect()->route('comunidades.index');
+            return redirect()->route('comunidades.show', [$dat])->with('status','Datos Actualizados Correctamente');
         } return view('index');
     }
 
@@ -132,7 +132,7 @@ class ComunidadController extends Controller
         \File::delete($file_path);
         $dat->delete();
         if (Auth::check()) {
-            return redirect()->route('comunidades.index');
+            return redirect()->route('comunidades.index')->with('status','Datos Eliminados Correctamente');
         } return view('index');
     }
 }
