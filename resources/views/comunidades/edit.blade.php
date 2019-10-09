@@ -3,7 +3,7 @@
 @section('title','Editar')
 
 @section('content')
-<div class="card shadow border border-warning" style="margin-top: 30px;">
+<div class="card col-md-8 offset-md-2 shadow border border-warning" style="margin-top: 30px;">
 	<div class="container">
 	@include('common.errors')
 		<form class="form-group" method="POST" action="{{ url('/comunidades/'.$dat->slug) }}" enctype="multipart/form-data">

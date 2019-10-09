@@ -4,6 +4,7 @@ use App\Registro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreGrupoRequest;
+use Illuminate\Support\Facades\Auth;
 class PaginaController extends Controller
 {
     /**
@@ -15,11 +16,14 @@ class PaginaController extends Controller
     {
         //$request->user()->authorizeRoles(['user', 'admin']);
         $usuarios = Registro::all();
-        if(count($usuarios) >= 1){
-            return view('grupos.index', compact('usuarios'));
-        }else{
-            return view('common.nothing', compact('usuarios'));
-        }
+        if (Auth::check()) {
+            if(count($usuarios) >= 1){
+                return view('grupos.index', compact('usuarios'));
+            }else{
+                return view('common.nothing', compact('usuarios'));
+            }
+        } return view('index');
+        
     }
     /**
      * Show the form for creating a new resource.
@@ -29,7 +33,9 @@ class PaginaController extends Controller
     public function create(Request $request)
     {
         //$request->user()->authorizeRoles(['user', 'admin']);
-        return view('grupos.create');
+        if (Auth::check()) {
+            return view('grupos.create');
+        } return view('index');
     }
     /**
      * Store a newly created resource in storage.
@@ -52,7 +58,10 @@ class PaginaController extends Controller
         $ingresar->slug = $request->input('slug');
         $ingresar->descript = $request->input('descript');
         $ingresar->save();
-        return redirect()->route('grupos.index')->with('status','Datos Creados Correctamente');
+        if (Auth::check()) {
+            return redirect()->route('grupos.index')->with('status','Datos Creados Correctamente');
+        } return view('index');
+        
     }
     /**
      * Display the specified resource.
@@ -64,7 +73,10 @@ class PaginaController extends Controller
     {
         $mostrar = Registro::where('slug','=',$slug)->firstOrFail();
         //dd($mostrar);
-        return view('grupos.show', compact('mostrar'));
+        if (Auth::check()) {
+            ;return view('grupos.show', compact('mostrar'));
+        } return view('index');
+        
     }
     /**
      * Show the form for editing the specified resource.
@@ -75,7 +87,10 @@ class PaginaController extends Controller
     public function edit(Registro $mostrar, $slug)
     {
         $mostrar = Registro::where('slug','=',$slug)->firstOrFail();
-        return view('grupos.edit', compact('mostrar'));
+        if (Auth::check()) {
+            return view('grupos.edit', compact('mostrar'));
+        } return view('index');
+        
     }
     /**
      * Update the specified resource in storage.
@@ -96,7 +111,10 @@ class PaginaController extends Controller
             $file->move(public_path().'/images/', $name);
         }
         $mostrar->save();
-        return redirect()->route('grupos.show', [$mostrar])->with('status','Datos Actualizados Correctamente');
+        if (Auth::check()) {
+            return redirect()->route('grupos.show', [$mostrar])->with('status','Datos Actualizados Correctamente');
+        } return view('index');
+        
     }
     /**
      * Remove the specified resource from storage.
@@ -110,6 +128,9 @@ class PaginaController extends Controller
         $file_path = public_path().'/images/'.$mostrar->avatar;
         \File::delete($file_path);
         $mostrar->delete();
-        return redirect()->route('grupos.index')->with('status','Datos Eliminados Correctamente');
+        if (Auth::check()) {
+            return redirect()->route('grupos.index')->with('status','Datos Eliminados Correctamente');
+        } return view('index');
+        
     }
 }

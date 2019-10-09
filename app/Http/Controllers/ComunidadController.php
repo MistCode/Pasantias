@@ -6,6 +6,7 @@ use App\Comunidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreComunidadesRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ComunidadController extends Controller
 {
@@ -18,11 +19,13 @@ class ComunidadController extends Controller
     {
         //$request->user()->authorizeRoles(['user', 'admin']);
         $usuarios = Comunidad::all();
-        if(count($usuarios) >= 1){
-            return view('comunidades.index', compact('usuarios'));
-        }else{
-            return view('common.nothing-comunidad', compact('usuarios'));
-        }
+        if (Auth::check()) {
+            if(count($usuarios) >= 1){
+                return view('comunidades.index', compact('usuarios'));
+            }else{
+                return view('common.nothing-comunidad', compact('usuarios'));
+            }
+        } return view('index');
     }
 
     /**
@@ -32,7 +35,9 @@ class ComunidadController extends Controller
      */
     public function create()
     {
-        return view('comunidades.create');
+        if (Auth::check()) {
+            return view('comunidades.create');
+        } return view('index');
     }
 
     /**
@@ -57,7 +62,9 @@ class ComunidadController extends Controller
         $dat->describir = $request->input('describir');
         $dat->save();
 
-        return redirect()->route('comunidades.index');
+        if (Auth::check()) {
+            return redirect()->route('comunidades.index');
+        } return view('index');
     }
 
     /**
@@ -69,7 +76,9 @@ class ComunidadController extends Controller
     public function show(Comunidad $dat, $slug)
     {
         $dat = Comunidad::where('slug','=',$slug)->firstOrFail();
-        return view('comunidades.show', compact('dat'));
+        if (Auth::check()) {
+            return view('comunidades.show', compact('dat'));
+        } return view('index');
     }
 
     /**
@@ -81,7 +90,9 @@ class ComunidadController extends Controller
     public function edit(Comunidad $dat, $slug)
     {
         $dat = Comunidad::where('slug','=',$slug)->firstOrFail();
-        return view('comunidades.edit', compact('dat'));
+        if (Auth::check()) {
+            return view('comunidades.edit', compact('dat'));
+        } return view('index');
     }
 
     /**
@@ -103,7 +114,9 @@ class ComunidadController extends Controller
             $file->move(public_path().'/images/comun/', $name);
         }
         $dat->save();
-        return redirect()->route('comunidades.index');
+        if (Auth::check()) {
+            return redirect()->route('comunidades.index');
+        } return view('index');
     }
 
     /**
@@ -118,6 +131,8 @@ class ComunidadController extends Controller
         $file_path = public_path().'/images/comun/'.$dat->avatar;
         \File::delete($file_path);
         $dat->delete();
-        return redirect()->route('comunidades.index');
+        if (Auth::check()) {
+            return redirect()->route('comunidades.index');
+        } return view('index');
     }
 }

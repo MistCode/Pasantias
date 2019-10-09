@@ -1,9 +1,10 @@
 @extends('layouts.App')
 @section('title','Crear Comunidad Nueva')
 @section('content')
-<div class="card shadow border border-warning" style="margin-top: 30px;">
+
+<div class="card col-md-6 offset-md-2 shadow border border-warning" style="margin-top: 30px;">
 @include('common.errors')
-	<div class="container">
+	<div class="row col-md-10 offset-md-1">
 		<form class="form-group" method="POST" action="{{ url('/comunidades/create') }}" enctype="multipart/form-data"> 
 		@csrf
 			@include('comunidades.form-create')

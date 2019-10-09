@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-	<div class="row col-md-10 offset-md-2">
+	<div class="row col-md-10 offset-md-1">
 			<form class="form-group" method="POST" action="{{ url('/grupos/create') }}" enctype="multipart/form-data"> 
 			@csrf
 				@include('grupos.form-create')

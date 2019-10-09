@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1bf26ed53d60d162fa97e06361001780",
+    "content-hash": "530443f43c44eac9bea5d64de0880ea3",
     "packages": [
         {
             "name": "caffeinated/shinobi",
@@ -59,6 +59,49 @@
                 "shinobi"
             ],
             "time": "2019-04-22T15:42:36+00:00"
+        },
+        {
+            "name": "caouecs/laravel-lang",
+            "version": "4.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caouecs/Laravel-lang.git",
+                "reference": "07e56beaceecd9da61a2c044be3dee7649f109e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/07e56beaceecd9da61a2c044be3dee7649f109e0",
+                "reference": "07e56beaceecd9da61a2c044be3dee7649f109e0",
+                "shasum": ""
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.10"
+            },
+            "suggest": {
+                "ablunier/laravel-lang-installer": "Command for easily add languages to a Laravel project",
+                "andrey-helldar/laravel-lang-publisher": "Easy installation and update of translation files for your project",
+                "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "caouecs",
+                    "email": "caouecs@caouecs.net"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "time": "2019-10-07T17:29:59+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
