@@ -19,8 +19,12 @@
 			<form class="form-group" method="POST" action="{{ url('/grupos/'.$mostrar->id) }}" enctype="multipart/form-data">
 			@method('DELETE')
 			@csrf
-				<a href="{{ url('/grupos/'.$mostrar->slug.'/edit') }}" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
-				<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button>
+				@can('grupos.edit')
+					<a href="{{ url('/grupos/'.$mostrar->slug.'/edit') }}" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+				@endcan
+				@can('grupos.destroy')
+					<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button>
+				@endcan
 				<a href="{{ url('/grupos') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Regresar</a>
 			</form>
 		</div>

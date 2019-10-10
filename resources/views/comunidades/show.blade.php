@@ -15,8 +15,12 @@
 					<form class="form-group" method="POST" action="{{ url('/comunidades/'.$dat->id) }}" enctype="multipart/form-data">
 						@method('DELETE')
 						@csrf
-						<a href="{{ url('/comunidades/'.$dat->slug.'/edit')}}" class="btn btn-primary"><i class="fas fa-edit"></i> Editar</a>
-						<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button>
+						@can('comunidades.edit')
+							<a href="{{ url('/comunidades/'.$dat->slug.'/edit')}}" class="btn btn-warning"><i class="fas fa-edit"></i> Editar</a>
+						@endcan
+						@can('comunidades.destroy')
+							<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button>
+						@endcan
 					</form>
 				</div>
 			</div>

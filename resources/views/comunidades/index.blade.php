@@ -25,7 +25,11 @@
 
 				      <td>{{ $dat->name }}</td>
 				      <td>{{ $dat->describir }}</td>
-				      <td><a href="{{ url('/comunidades', $dat["slug"]) }}" class="btn btn-primary">Ver <i class="fas fa-plus-circle"></i></a></td>
+				      <td>
+				      	@can('comunidades.show')
+				      		<a href="{{ url('/comunidades', $dat["slug"]) }}" class="btn btn-primary">Ver <i class="fas fa-plus-circle"></i></a>
+				      	@endcan
+				      </td>
 				    </tr>
 				@endforeach 
 				</div>   

@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\Role;
-
+use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
 class RoleController extends Controller
 {
     /**
@@ -14,9 +12,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('role.index');
+        $roles = Role::paginate();
+        return view('roles.index', compact('roles'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -24,9 +22,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('role.create');
+        $permissions = Permission::get();
+        return view('roles.create', compact('permissions'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -35,9 +33,11 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        return view('role.store');
+        $role = Role::create($request->all());
+        $role->permissions()->sync($request->get('permissions'));
+        return redirect()->route('roles.edit', $role->id)
+            ->with('info', 'Rol guardado con éxito');
     }
-
     /**
      * Display the specified resource.
      *
@@ -46,9 +46,9 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        return view('role.show');
+        $role = Role::find($id);
+        return view('roles.show', compact('role'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -57,9 +57,10 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        return view('role.edit');
+        $role = Role::find($id);
+        $permissions = Permission::get();
+        return view('roles.edit', compact('role', 'permissions'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -69,9 +70,12 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return view('role.update');
+        $role = Role::find($id);
+        $role->update($request->all());
+        $role->permissions()->sync($request->get('permissions'));
+        return redirect()->route('roles.edit', $role->id)
+            ->with('info', 'Rol guardado con éxito');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -80,6 +84,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        return view('role.destroy');
+        $role = Role::find($id)->delete();
+        return back()->with('info', 'Eliminado correctamente');
     }
 }

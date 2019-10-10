@@ -12,7 +12,7 @@
 	</div>
 
 @include('common.errors')
-	<form class="form-group" method="POST" action="{{ url('/grupos/'.$mostrar->slug) }}" enctype="multipart/form-data">
+	<form class="form-group" method="POST" action="{{ route('grupos.update', $mostrar->slug) }}" enctype="multipart/form-data">
 		@method('PUT')
 		@csrf
 		<div class="row">
