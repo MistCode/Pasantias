@@ -18,16 +18,34 @@
               <ul data-type="navbar" class="sf-menu">
                 <li class="active"><a href="./">Home</a>
                 </li>
-                <li><a href="{{ url('/grupos') }}">Grupos</a>
-                  <ul>
-                    <li><a href="{{ url('/grupos') }}"><img src="{{ asset('images/grupos-imagen.jpg') }}"></a></li>
-                  </ul>
+                @can('grupos.index')
+                <li>
+                  <a href="{{ route('grupos.index') }}">Grupos</a>
+                    <ul>
+                      <li>
+                        <a href="{{ route('grupos.index') }}"><img src="{{ asset('images/grupos-imagen.jpg') }}"></a></li>
+                    </ul>
                 </li>
-                <li><a href="{{ url('/comunidades') }}">Comunidades</a>
-                  <ul>
-                    <li><a href="{{ url('/comunidades') }}"><img src="{{ asset('images/comunidad-imagen.jpg') }}"></a></li>
-                  </ul>
+                @endcan
+                @can('grupos.index')
+                <li>
+                  <a href="{{ route('comunidades.index') }}">Comunidades</a>
+                    <ul>
+                      <li>
+                        <a href="{{ route('comunidades.index') }}"><img src="{{ asset('images/comunidad-imagen.jpg') }}"></a></li>
+                    </ul>
                 </li>
+                @endcan
+                @can('grupos.index')
+                <li>
+                  <a href="{{ route('users.index') }}">Usuarios</a>
+                </li>
+                @endcan
+                @can('grupos.index')
+                <li>
+                  <a href="{{ route('roles.index') }}">Roles</a>
+                </li>
+                @endcan
                 <li>
                 @if (Route::has('login'))
                 <li>

@@ -83,35 +83,35 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:users.edit');
 		/**/
 	//Grupos
-	Route::post('grupos/store', 'PaginaController@store')->name('grupos.store')
+	Route::post('grupos/create', 'PaginaController@store')->name('grupos.store')
 		->middleware('permission:grupos.create');
 	Route::get('grupos', 'PaginaController@index')->name('grupos.index')
 		->middleware('permission:grupos.index');
 	Route::get('grupos/create', 'PaginaController@create')->name('grupos.create')
 		->middleware('permission:grupos.create');
-	Route::put('grupos/{$slug}', 'PaginaController@update')->name('grupos.update')
+	Route::put('grupos/{grupo}', 'PaginaController@update')->name('grupos.update')
 		->middleware('permission:grupos.edit');
-	Route::get('grupos/{$slug}', 'PaginaController@show')->name('grupos.show')
+	Route::get('grupos/{grupo}', 'PaginaController@show')->name('grupos.show')
 		->middleware('permission:grupos.show');
-	Route::delete('grupos/{$slug}', 'PaginaController@destroy')->name('grupos.destroy')
+	Route::delete('grupos/{grupo}', 'PaginaController@destroy')->name('grupos.destroy')
 		->middleware('permission:grupos.destroy');
-	Route::get('grupos/{$slug}/edit', 'PaginaController@edit')->name('grupos.edit')
+	Route::get('grupos/{grupo}/edit', 'PaginaController@edit')->name('grupos.edit')
 		->middleware('permission:grupos.edit');
 
 	//Comunidades
-	Route::post('comunidades/store', 'ComunidadController@store')->name('comunidades.store')
+	Route::post('comunidades/create', 'ComunidadController@store')->name('comunidades.store')
 		->middleware('permission:comunidades.create');
 	Route::get('comunidades', 'ComunidadController@index')->name('comunidades.index')
 		->middleware('permission:comunidades.index');
 	Route::get('comunidades/create', 'ComunidadController@create')->name('comunidades.create')
 		->middleware('permission:comunidades.create');
-	Route::put('comunidades/{$slug}', 'ComunidadController@update')->name('comunidades.update')
+	Route::put('comunidades/{comunidades}', 'ComunidadController@update')->name('comunidades.update')
 		->middleware('permission:comunidades.edit');
-	Route::get('comunidades/{$slug}', 'ComunidadController@show')->name('comunidades.show')
+	Route::get('comunidades/{comunidades}', 'ComunidadController@show')->name('comunidades.show')
 		->middleware('permission:comunidades.show');
-	Route::delete('comunidades/{$slug}', 'ComunidadController@destroy')->name('comunidades.destroy')
+	Route::delete('comunidades/{comunidades}', 'ComunidadController@destroy')->name('comunidades.destroy')
 		->middleware('permission:comunidades.destroy');
-	Route::get('comunidades/{$slug}/edit', 'ComunidadController@edit')->name('comunidades.edit')
+	Route::get('comunidades/{comunidades}/edit', 'ComunidadController@edit')->name('comunidades.edit')
 		->middleware('permission:comunidades.edit');
 
 });

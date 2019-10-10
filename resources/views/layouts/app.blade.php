@@ -47,20 +47,38 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <!-- Left Side Of Navbar -->
                 <div class="navbar-nav mr-auto">
-                    <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarGrupos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grupos</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarGrupos">
-                          <a class="dropdown-item" href="{{ url('/grupos') }}">Mis Grupos</a>
-                          <a class="dropdown-item" href="{{ url('/grupos/create') }}">Añadir</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarComunity" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Comunidades</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarComunity">
-                          <a class="dropdown-item" href="{{ url('/comunidades') }}">Mis Comunidades</a>
-                          <a class="dropdown-item" href="{{ url('/comunidades/create') }}">Añadir</a>
-                        </div>
-                    </div>
+                	@can('grupos.index')
+	                    <div class="nav-item dropdown">
+	                    <a class="nav-link dropdown-toggle" href="#" id="navbarGrupos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grupos</a>
+	                        <div class="dropdown-menu" aria-labelledby="navbarGrupos">
+	                        	<a class="dropdown-item" href="{{ url('/grupos') }}">Mis Grupos</a>
+		                        @can('grupos.create')
+	                            	<a class="dropdown-item" href="{{ url('/grupos/create') }}">Añadir</a>
+	                            @endcan
+	                        </div>
+	                    </div>
+                    @endcan
+                    @can('comunidades.index')
+	                    <div class="nav-item dropdown">
+	                    <a class="nav-link dropdown-toggle" href="#" id="navbarComunity" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Comunidades</a>
+	                        <div class="dropdown-menu" aria-labelledby="navbarComunity">
+	                        	<a class="dropdown-item" href="{{ url('/comunidades') }}">Mis Comunidades</a>
+	                        @can('comunidades.create')
+	                        	<a class="dropdown-item" href="{{ url('/comunidades/create') }}">Añadir</a>
+	                        @endcan
+	                        </div>
+	                    </div>
+                    @endcan
+                    @can('users.index')
+	                    <li class="nav-item">
+	                        <a class="nav-link" href="{{ route('users.index') }}">{{ __('Ususarios') }}</a>
+	                    </li>
+                    @endcan
+                    @can('roles.index')
+	                    <li class="nav-item">
+	                        <a class="nav-link" href="{{ route('roles.index') }}">{{ __('Roles') }}</a>
+	                    </li>
+                    @endcan
                     <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
                 </div>
                     <!-- Right Side Of Navbar -->
