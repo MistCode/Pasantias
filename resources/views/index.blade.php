@@ -27,7 +27,7 @@
                     </ul>
                 </li>
                 @endcan
-                @can('grupos.index')
+                @can('comunidades.index')
                 <li>
                   <a href="{{ route('comunidades.index') }}">Comunidades</a>
                     <ul>
@@ -36,12 +36,12 @@
                     </ul>
                 </li>
                 @endcan
-                @can('grupos.index')
+                @can('users.index')
                 <li>
                   <a href="{{ route('users.index') }}">Usuarios</a>
                 </li>
                 @endcan
-                @can('grupos.index')
+                @can('roles.index')
                 <li>
                   <a href="{{ route('roles.index') }}">Roles</a>
                 </li>

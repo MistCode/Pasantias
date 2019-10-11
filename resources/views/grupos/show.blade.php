@@ -16,7 +16,7 @@
 		<h5 class="card-title"> {{ $mostrar->name }} </h5>
 			<p class="card-text">{{ $mostrar->descript }}</p>
 		<div class="row" style="justify-content: center;">
-			<form class="form-group" method="POST" action="{{ url('/grupos/'.$mostrar->id) }}" enctype="multipart/form-data">
+			<form class="form-group" method="POST" action="{{ route('grupos.destroy', $mostrar->id) }}" enctype="multipart/form-data">
 			@method('DELETE')
 			@csrf
 				@can('grupos.edit')

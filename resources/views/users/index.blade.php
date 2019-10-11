@@ -41,12 +41,13 @@
                                 @endcan
                                 @can('users.destroy')
                                 <td width="10px">
-                                    {!! Form::open(['route' => ['users.destroy', $user->id], 
-                                    'method' => 'DELETE']) !!}
+                                    <form class="form-group" method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                    @method('DELETE')
+                                    @csrf
                                         <button class="btn btn-sm btn-danger">
                                             Eliminar
                                         </button>
-                                    {!! Form::close() !!}
+                                    </form>
                                 </td>
                                 @endcan
                             </tr>

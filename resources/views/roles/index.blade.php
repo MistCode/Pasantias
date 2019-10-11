@@ -4,20 +4,20 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="panel panel-default" style="margin-bottom: 10px;margin-top: 10px;">
+                <div class="panel-heading btn btn-info" style="margin-bottom: 10px;margin-top: 10px;">
                     Roles
+                </div>
                     @can('roles.create')
                     <a href="{{ route('roles.create') }}" 
                     class="btn btn-sm btn-primary pull-right">
                         Crear
                     </a>
                     @endcan
-                </div>
 
                 <div class="panel-body">
-                    <table class="table table-striped table-hover">
-                        <thead>
+                    <table class="table table-striped table-hover shadow">
+                        <thead class="thead-dark">
                             <tr>
                                 <th width="10px">ID</th>
                                 <th>Nombre</th>
@@ -32,7 +32,7 @@
                                 @can('roles.show')
                                 <td width="10px">
                                     <a href="{{ route('roles.show', $role->id) }}" 
-                                    class="btn btn-sm btn-default">
+                                    class="btn btn-sm btn btn-info">
                                         ver
                                     </a>
                                 </td>
@@ -40,7 +40,7 @@
                                 @can('roles.edit')
                                 <td width="10px">
                                     <a href="{{ route('roles.edit', $role->id) }}" 
-                                    class="btn btn-sm btn-default">
+                                    class="btn btn-sm btn btn-warning">
                                         editar
                                     </a>
                                 </td>
