@@ -11,12 +11,12 @@
       <div class="modal-body">
       	<form @submit.prevent="saveMensaje">
 	        <div class="form-group">
-			    <label>Asunto</label>
+			    <label>Asunto:</label>
 			    <input type="text" class="form-control" placeholder="Ingresa el Asunto" v-model="name">
 		  	</div>
 		  	<div class="form-group">
-			    <label>Contenido</label>
-			    <input type="text" class="form-control" placeholder="Escribe el contenido" v-model="description">
+			    <label>Contenido:</label>
+			    <textarea type="text" class="form-control" placeholder="Escribe el contenido" v-model="description"></textarea>
 		  	</div>
 		  	<div class="card-footer">
 			  	<button type="submit" class="btn btn-outline-primary">Enviar</button>
@@ -30,6 +30,10 @@
 
 <script>
 	import EventBus from '../../event-bus'
+    import moment from 'moment'
+
+    moment.locale('es');
+
 	export default {
 		data(){
 			return {
@@ -49,7 +53,6 @@
 				.then(function(res){console.log(res)
 					$('#AddMsj').modal('hide')
 					EventBus.$emit('msj-added', res.data.info)
-					
 				})
 				.catch(function(err){
 					console.log(err)

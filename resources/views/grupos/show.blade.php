@@ -34,7 +34,11 @@
 			<h2><span class="border-bottom">Personas del Grupo {{ $mostrar->slug }}</span></h2>
 		</div>
 	</div>
-	<modal-button></modal-button>
-	<create-form-person></create-form-person>
-	<lista-de-personas></lista-de-personas>
+	@can('personas.create')
+		<modal-button></modal-button>
+		<create-form-person></create-form-person>
+	@endcan
+	@can('personas.index')
+		<lista-de-personas></lista-de-personas>
+	@endcan
 @endsection

@@ -22,6 +22,7 @@
 		created(){
 			EventBus.$on('persona-added', data => {
 				this.personas.push(data)
+				toastr.success('Persona Creada')
 			})
 		},
 		mounted() {

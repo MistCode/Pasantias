@@ -14,6 +14,10 @@
 
 <script>
     import EventBus from '../../event-bus'
+    import moment from 'moment'
+
+    moment.locale('es');
+
     export default {
         data(){
             return {
@@ -24,6 +28,7 @@
         created(){
             EventBus.$on('msj-added', data => {
                 this.infos.push(data)
+                toastr.success('Mensaje Creado')
             })
         },
         mounted() {

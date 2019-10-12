@@ -31,27 +31,8 @@ Vue.component('listando', require('./components/msj/Read.vue').default);
 Vue.component('formulario', require('./components/msj/Create.vue').default);
 Vue.component('boton', require('./components/msj/Click.vue').default);
 Vue.component('edita', require('./components/msj/Msj-edit.vue').default);
+
 /**
-
-No Eliminar
-updatePersona: function(persona){
-                let currentRoute = window.location.pathname
-            var url = `http://localhost${currentRoute}/personas/` + persona.id;
-            axios.put(url, {
-              name: persona.name,
-              picture: persona.picture
-            })
-            .then((res) => {
-              console.log(res)
-          this.editMode = false;
-          this.personas[index, 1] = persona
-            })
-                .catch(function(err){
-                    console.log(err)
-                })
-          }
-esto es importante
-
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.

@@ -19,11 +19,6 @@
 Route::get('/', 'Control@index');
 
 //route Persona
-Route::resource('personas','PersonaController');
-Route::get('/grupos/{grupo}/personas','PersonaController@index');
-Route::post('/grupos/{grupo}/personas','PersonaController@store');
-Route::put('/grupos/{grupo}/personas/{id}', 'PersonaController@update');
-Route::delete('/grupos/{grupo}/personas/{id}', 'PersonaController@destroy');
 
 //route info
 Route::resource('info', 'MensajeController');
@@ -41,6 +36,7 @@ Route::get('/profile', 'ProfileController@profile')->name('user.profile');
 Route::patch('/profile', 'ProfileController@update_profile')->name('user.profile.update');
 
 Route::middleware(['auth'])->group(function () {
+
 	//Roles
 	Route::post('roles/store', 'RoleController@store')->name('roles.store')
 		->middleware('permission:roles.create');
@@ -68,7 +64,7 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:users.destroy');
 	Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
 		->middleware('permission:users.edit');
-		/**/
+		
 	//Grupos
 	Route::post('grupos/create', 'PaginaController@store')->name('grupos.store')
 		->middleware('permission:grupos.create');
@@ -101,4 +97,17 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('comunidades/{comunidades}/edit', 'ComunidadController@edit')->name('comunidades.edit')
 		->middleware('permission:comunidades.edit');
 
+	//Personas
+	Route::resource('personas','PersonaController');
+	Route::get('/grupos/{grupo}/personas','PersonaController@index');
+	Route::post('/grupos/{grupo}/personas','PersonaController@store');
+	Route::put('/grupos/{grupo}/personas/{id}', 'PersonaController@update');
+	Route::delete('/grupos/{grupo}/personas/{id}', 'PersonaController@destroy');
+
+	//route info
+	Route::resource('info', 'MensajeController');
+	Route::get('/comunidades/{comunidad}/info','MensajeController@index');
+	Route::post('/comunidades/{comunidad}/info','MensajeController@store');
+	Route::put('/comunidades/{comunidad}/info/{id}','MensajeController@update');
+	Route::delete('/comunidades/{comunidad}/info/{id}','MensajeController@destroy');
 });

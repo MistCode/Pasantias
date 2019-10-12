@@ -12,7 +12,6 @@
 
     <script src="https://kit.fontawesome.com/47630105e1.js" crossorigin="anonymous"></script>
 
-
     <link  rel = " stylesheet "  href = " https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css " >
     <link  href = " https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.min.css "  media = " all "  rel = " stylesheet "  type = " text/css " />
         <script  src =" https://code.jquery.com/jquery-3.3.1.min.js "> </script>
@@ -132,5 +131,7 @@ $(document).on('ready', function() {
     });
 });
 </script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </body>
 </html>

@@ -29,6 +29,7 @@
             .then((res) => {
             	console.log(res)
             	this.$emit('deletePersona');
+                toastr.success('Persona Eliminado')
             })
             .catch(function(err){
                 console.log(err)
@@ -48,6 +49,7 @@
             	console.log(res)
 					this.editMode = false;
 	        		this.$emit('updatePersona', persona);
+                    toastr.success('Persona Editado')
         		})
                 .catch(function(err){
                     console.log(err)

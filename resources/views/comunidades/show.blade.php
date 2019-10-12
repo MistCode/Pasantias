@@ -27,9 +27,13 @@
 		</ul>
 		<ul>
 			<div style="width: 45rem;">
-				<boton></boton>
-				<formulario></formulario>
-				<listando></listando>
+				@can('info.create')
+					<boton></boton>
+					<formulario></formulario>
+				@endcan
+				@can('info.index')
+					<listando></listando>
+				@endcan
 			</div>
 		</ul>
 	</div>

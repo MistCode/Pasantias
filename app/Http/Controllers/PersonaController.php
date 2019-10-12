@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Persona;
 use App\Registro;
+use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Http\Request;
 
 class PersonaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:personas.index')->only(['index']);
+        $this->middleware('permission:personas.create')->only(['store']);
+        $this->middleware('permission:personas.edit')->only(['update']);
+        $this->middleware('permission:personas.destroy')->only(['destroy']);
+    }
     public function index(Registro $grupo, Request $request){
     	if($request->ajax()){
     		return response()->json($grupo->personas, 200);

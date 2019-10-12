@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Info;
 use App\Comunidad;
+use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
 
 class MensajeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:info.index')->only(['index']);
+        $this->middleware('permission:info.create')->only(['store']);
+        $this->middleware('permission:info.edit')->only(['update']);
+        $this->middleware('permission:info.destroy')->only(['destroy']);
+    }
+
     public function index(Comunidad $comunidad, Request $request)
     {
     	if($request->ajax()){

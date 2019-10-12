@@ -1,5 +1,5 @@
 <template>
-	<div class="card bg-white border-dark shadow" style="margin-top: 10px; margin-bottom: 10px;">	
+	<div class="card bg-white border-info shadow" style="margin-top: 10px; margin-bottom: 10px;">	
         <div class="card-header bg-white border-dark"> 
 			<div class="row">
 				<div class="col-md-6">
@@ -23,7 +23,7 @@
             </div>
             <div class="card-footer">
                 <small>
-                    Fue Creado {{ info.created_at }}
+                    Fue Creado {{ since(info.created_at) }}
                 </small>
             </div>
     </div>
@@ -31,6 +31,10 @@
 
 <script>
 	import EventBus from '../../event-bus'
+    import moment from 'moment'
+
+    moment.locale('es');
+
 	export default {
 		props:['info','index'],
 		data(){
@@ -47,6 +51,7 @@
             .then((res) => {
             	console.log(res)
             	this.$emit('deleteInfo');
+                toastr.success('Mensaje Eliminado')
             })
             .catch(function(err){
                 console.log(err)
@@ -66,11 +71,15 @@
             	console.log(res)
 					this.editMode = false;
 	        		this.$emit('updateInfo', info);
+                    toastr.success('Mensaje Editado')
         		})
                 .catch(function(err){
                     console.log(err)
                 })
-        	}
+        	},
+            since: function(d){
+                return moment(d).fromNow();
+            }
         }
     }
 </script>

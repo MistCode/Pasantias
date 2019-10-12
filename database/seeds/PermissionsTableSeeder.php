@@ -114,5 +114,49 @@ class PermissionsTableSeeder extends Seeder
         	'slug' => 'comunidades.destroy',
         	'description' => 'Eliminar cualquier Comunidad del sistema',
         ]);
+
+        //Personas
+        Permission::create([
+            'name' => 'Navegar Personas',
+            'slug' => 'personas.index',
+            'description' => 'Lista y Navega todos los Persona del sistema',
+        ]);
+        Permission::create([
+            'name' => 'Creación de Personas',
+            'slug' => 'personas.create',
+            'description' => 'Editar cualquier dato de un Persona del sistema',
+        ]);
+        Permission::create([
+            'name' => 'Edición de Persona',
+            'slug' => 'personas.edit',
+            'description' => 'Editar cualquier dato de un Persona del sistema',
+        ]);
+        Permission::create([
+            'name' => 'Eliminar Persona',
+            'slug' => 'personas.destroy',
+            'description' => 'Eliminar cualquier Persona del sistema',
+        ]);
+
+        //Mensajes
+        Permission::create([
+            'name' => 'Navegar Mensajes',
+            'slug' => 'info.index',
+            'description' => 'Lista y Navega todos los Mensajes del sistema',
+        ]);
+        Permission::create([
+            'name' => 'Creación de Mensajes',
+            'slug' => 'info.create',
+            'description' => 'Editar cualquier dato de un Mensaje del sistema',
+        ]);
+        Permission::create([
+            'name' => 'Edición de Mensaje',
+            'slug' => 'info.edit',
+            'description' => 'Editar cualquier dato de un Mensaje del sistema',
+        ]);
+        Permission::create([
+            'name' => 'Eliminar Mensaje',
+            'slug' => 'info.destroy',
+            'description' => 'Eliminar cualquier Mensaje del sistema',
+        ]);
     }
 }

@@ -24,10 +24,10 @@ class StoreComunidadesRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max: 15',
+            'name' => 'required|max: 20',
             'slug' => 'required',
             'avatar' => 'required|image',
-            'describir'=> 'required|max: 200'
+            'describir'=> 'required|max: 300'
         ];
     }
 }
