@@ -2,10 +2,10 @@
 namespace App;
 use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;	
 use Illuminate\Notifications\Notifiable;	
-use Illuminate\Contracts\Auth\MustVerifyEmail;	
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;	
 use App\Notifications\UserResetPassword;
-class User extends Authenticatable	
+class User extends Authenticatable implements MustVerifyEmail
 {	
     use Notifiable, HasRolesAndPermissions;	
     public function roles(){	
@@ -67,5 +67,10 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new UserResetPassword($token));
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new Notifications\VerifyEmail);
     }
 }

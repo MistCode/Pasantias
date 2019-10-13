@@ -19,18 +19,9 @@ MAIL_ENCRYPTION=tls
 
 Route::get('/', 'Control@index');
 
-//route Persona
+Auth::routes(['verify' => true]);
 
-//route info
-Route::resource('info', 'MensajeController');
-Route::get('/comunidades/{comunidad}/info','MensajeController@index');
-Route::post('/comunidades/{comunidad}/info','MensajeController@store');
-Route::put('/comunidades/{comunidad}/info/{id}','MensajeController@update');
-Route::delete('/comunidades/{comunidad}/info/{id}','MensajeController@destroy');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 // Perfil/Profile
 Route::get('/profile', 'ProfileController@profile')->name('user.profile');
