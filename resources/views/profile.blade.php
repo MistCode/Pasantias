@@ -39,7 +39,7 @@
             <div class="form-group row">
               <label for="avatar" class="col-md-4 col-form-label text-md-right">Avatar</label>
               <div class="col-md-8">
-                <input id="input-b1" name="avatar" type="file" class="file" data-browse-on-zone-click="true" value="{{ old('avatar') }}" required autocomplete="avatar" autofocus>
+                <input id="input-b1" name="avatar" type="file" class="file" data-browse-on-zone-click="true" value="{{ old('avatar') }}" required autocomplete="email" autofocus>>
               </div>
             </div>
               <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Actualizar</button>
