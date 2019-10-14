@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 offset-md-2">
             <div class="panel panel-default" style="margin-bottom: 10px;margin-top: 10px;">
                 <div class="panel-heading btn btn-info" style="margin-bottom: 10px;margin-top: 10px;">
                     Roles
