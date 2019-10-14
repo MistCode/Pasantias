@@ -2,6 +2,11 @@
 @section('title','Mostrando Información')
 @section('content')
 @include('common.success')
+<div class="container">
+		<div class=" col-sm text-center">
+			<h2 style="margin-top: 10px;"><span class="border-bottom">Información de {{ $dat->slug }}</span></h2>
+		</div>
+	</div>
 	<div class="row">
 		<ul>
 			<div class="card text-center bg-white rounded border-info" style="width: 18rem; margin-right: 20px; margin-top: 30px;">

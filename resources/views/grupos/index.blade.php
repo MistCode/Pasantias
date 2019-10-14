@@ -7,7 +7,6 @@
 @include('common.success')
 
 	<div class="container">
-		
 		<div class=" col-sm text-center">
 			<h1 style="margin-top: 10px;"><span class="border-bottom">Grupos</span></h1>
 		</div>
