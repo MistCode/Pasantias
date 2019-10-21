@@ -14,7 +14,7 @@
 
     <link  rel = " stylesheet "  href = " https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css " >
     <link  href = " https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/css/fileinput.min.css "  media = " all "  rel = " stylesheet "  type = " text/css " />
-        <script  src =" https://code.jquery.com/jquery-3.3.1.min.js "> </script>
+    <script  src =" https://code.jquery.com/jquery-3.3.1.min.js "> </script>
     <script  src = " https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/plugins/piexif.min.js "  type = " text / javascript "></script>
     <script  src = " https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/plugins/sortable.min.js "  type = " text / javascript "></script>
     <script  src = " https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/plugins/purify.min.js " text / javascript></script>
@@ -24,6 +24,9 @@
     <script  src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/themes/fa/theme.js "></script>
     <script  src = " https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.6/js/locales/es.js "></script>
 
+        <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -135,16 +138,18 @@
                 @yield('content')
         </main>
     </div>
-    <script>
+<script>
 $(document).on('ready', function() {
     $("#input-b1").fileinput({
         showUpload: false,
         dropZoneEnabled: false,
         maxFileCount: 10
     });
+    $('#myTable').DataTable();
 });
 </script>
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </body>
 </html>

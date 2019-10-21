@@ -8,7 +8,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-8">
-			<table class="table table-hover bg-white text-center shadow" style="margin-top: 10px;">
+			<table id="myTable" class="table table-hover bg-white text-center shadow" style="margin-top: 10px;">
 			  <thead class="thead-dark">
 			    <tr>
 			      <th scope="col">Comunidades</th>

@@ -10,7 +10,7 @@
 		<div class="card col-md-8 offset-md-2 text-center shadow bg-white border-info" style="margin-top: 140px; margin-bottom: 20px;">
 			<div class="row no-gutters">
     			<div class="col-md-4">
-      				<img src="{{ asset('images/comunidad-imagen.jpg') }}" class="card-img" alt="...">
+      				<img src="{{ asset('images/comunidad-imagen.jpg') }}" class="card-img" alt="..." style="margin-top: 40px;">
     			</div>
     				<div class="col-md">
 						<div class="card-body">

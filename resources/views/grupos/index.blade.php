@@ -1,6 +1,6 @@
 @extends('layouts.App')
 
-@section('title','Mis Grupos')
+@section('title','Grupos')
 
 @section('content')
 

@@ -1,5 +1,5 @@
 @extends('layouts.App')
-
+@section('title','Usuarios')
 @section('content')
 <div class="container">
     <div class="row">
@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <table class="table table-striped table-hover shadow" style="margin-bottom: 10px;margin-top: 10px;">
+                    <table id="myTable" class="table table-striped table-hover shadow" style="margin-bottom: 10px;margin-top: 10px;">
                         <thead class="thead-dark">
                             <tr>
                                 <th width="10px">ID</th>

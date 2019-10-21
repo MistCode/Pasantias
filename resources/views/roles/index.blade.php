@@ -1,5 +1,5 @@
 @extends('layouts.App')
-
+@section('title','Roles')
 @section('content')
 <div class="container">
     <div class="row">
@@ -16,7 +16,7 @@
                     @endcan
 
                 <div class="panel-body">
-                    <table class="table table-striped table-hover shadow">
+                    <table id="myTable" class="table table-striped table-hover shadow">
                         <thead class="thead-dark">
                             <tr>
                                 <th width="10px">ID</th>

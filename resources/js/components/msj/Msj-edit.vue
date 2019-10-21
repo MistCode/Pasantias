@@ -3,12 +3,15 @@
         <div class="card-header bg-white border-dark"> 
 			<div class="row">
 				<div class="col-md-6">
-					<input v-if="editMode" type="text" class="form-control" placeholder="Asunto" v-model="info.name">
-				
-	            <h4 v-else>{{ info.name }}</h4>
+                    <div v-if="editMode" style="margin-top: 5px; margin-bottom: 10px;">
+                        <label for="info.name">Nombre del Asunto</label>
+                        <input type="text" class="form-control" placeholder="Asunto" v-model="info.name">
+                    </div>
+					<h4 v-else>{{ info.name }}</h4>
 	        	</div>
 			
 	            <div class="offset-sm-4">
+                    
 			        <button v-if="editMode" class="btn btn-success btn-sm rounded-circle" @click.prevent="updateInfo(info, index)"><i class="fas fa-check"></i></button>
 
 			        <button v-else class="btn btn-warning btn-sm rounded-circle" @click.prevent="editInfo()"><i class="fas fa-edit"></i></button>
@@ -17,15 +20,18 @@
 		        </div>
 		    </div>
         </div>
-        	<input v-if="editMode" type="text" class="form-control" placeholder="Contenido" v-model="info.description">
-            <div class="card-body" v-else>
-                {{ info.description }}
-            </div>
-            <div class="card-footer">
-                <small>
-                    Fue Creado {{ since(info.created_at) }}
-                </small>
-            </div>
+        <div v-if="editMode" style="margin-top: 5px; margin-bottom: 10px;">
+            <label for="info.description">Contenido</label>
+            <textarea id="info.description" cols="30" rows="10" <input type="text" class="form-control" placeholder="Contenido" v-model="info.description"></textarea>
+        </div>
+        <div class="card-body" v-else>
+            {{ info.description }}
+        </div>
+        <div class="card-footer">
+            <small>
+                Fue Creado {{ since(info.created_at) }}
+            </small>
+        </div>
     </div>
 </template>
 

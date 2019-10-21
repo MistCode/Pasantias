@@ -1,5 +1,5 @@
 @extends('layouts.App')
-@section('title','Crear Usuario')
+@section('title','Crear Grupo')
 @section('content')
 
 @include('common.errors')

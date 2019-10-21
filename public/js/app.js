@@ -1995,6 +1995,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 moment__WEBPACK_IMPORTED_MODULE_1___default.a.locale('es');
@@ -2192,6 +2198,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6848,7 +6860,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.loader,\r\n.loader:before,\r\n.loader:after {\r\n  background: #000080;\r\n  -webkit-animation: load1 1s infinite ease-in-out;\r\n  animation: load1 1s infinite ease-in-out;\r\n  width: 1em;\r\n  height: 4em;\n}\n.loader {\r\n  color: #000080;\r\n  text-indent: -9999em;\r\n  margin: 88px auto;\r\n  position: relative;\r\n  font-size: 11px;\r\n  transform: translateZ(0);\r\n  -webkit-animation-delay: -0.16s;\r\n  animation-delay: -0.16s;\n}\n.loader:before,\r\n.loader:after {\r\n  position: absolute;\r\n  top: 0;\r\n  content: '';\n}\n.loader:before {\r\n  left: -1.5em;\r\n  -webkit-animation-delay: -0.32s;\r\n  animation-delay: -0.32s;\n}\n.loader:after {\r\n  left: 1.5em;\n}\n@-webkit-keyframes load1 {\n0%,\r\n  80%,\r\n  100% {\r\n    box-shadow: 0 0;\r\n    height: 4em;\n}\n40% {\r\n    box-shadow: 0 -2em;\r\n    height: 5em;\n}\n}\n@keyframes load1 {\n0%,\r\n  80%,\r\n  100% {\r\n    box-shadow: 0 0;\r\n    height: 4em;\n}\n40% {\r\n    box-shadow: 0 -2em;\r\n    height: 5em;\n}\n}\r\n", ""]);
+exports.push([module.i, "\n.loader,\r\n.loader:before,\r\n.loader:after {\r\n  background: #000080;\r\n  -webkit-animation: load1 1s infinite ease-in-out;\r\n  animation: load1 1s infinite ease-in-out;\r\n  width: 1em;\r\n  height: 4em;\n}\n.loader {\r\n  color: #000080;\r\n  text-indent: -9999em;\r\n  margin: 88px auto;\r\n  position: relative;\r\n  font-size: 11px;\r\n  -webkit-transform: translateZ(0);\r\n  transform: translateZ(0);\r\n  -webkit-animation-delay: -0.16s;\r\n  animation-delay: -0.16s;\n}\n.loader:before,\r\n.loader:after {\r\n  position: absolute;\r\n  top: 0;\r\n  content: '';\n}\n.loader:before {\r\n  left: -1.5em;\r\n  -webkit-animation-delay: -0.32s;\r\n  animation-delay: -0.32s;\n}\n.loader:after {\r\n  left: 1.5em;\n}\n@-webkit-keyframes load1 {\n0%,\r\n  80%,\r\n  100% {\r\n    box-shadow: 0 0;\r\n    height: 4em;\n}\n40% {\r\n    box-shadow: 0 -2em;\r\n    height: 5em;\n}\n}\n@keyframes load1 {\n0%,\r\n  80%,\r\n  100% {\r\n    box-shadow: 0 0;\r\n    height: 4em;\n}\n40% {\r\n    box-shadow: 0 -2em;\r\n    height: 5em;\n}\n}\r\n", ""]);
 
 // exports
 
@@ -52306,7 +52318,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(global) {/**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.15.0
+ * @version 1.16.0
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -52328,16 +52340,17 @@ __webpack_require__.r(__webpack_exports__);
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
+var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined' && typeof navigator !== 'undefined';
 
-var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
-var timeoutDuration = 0;
-for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
-  if (isBrowser && navigator.userAgent.indexOf(longerTimeoutBrowsers[i]) >= 0) {
-    timeoutDuration = 1;
-    break;
+var timeoutDuration = function () {
+  var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
+  for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
+    if (isBrowser && navigator.userAgent.indexOf(longerTimeoutBrowsers[i]) >= 0) {
+      return 1;
+    }
   }
-}
+  return 0;
+}();
 
 function microtaskDebounce(fn) {
   var called = false;
@@ -52455,6 +52468,17 @@ function getScrollParent(element) {
   }
 
   return getScrollParent(getParentNode(element));
+}
+
+/**
+ * Returns the reference node of the reference object, or the reference object itself.
+ * @method
+ * @memberof Popper.Utils
+ * @param {Element|Object} reference - the reference element (the popper will be relative to this)
+ * @returns {Element} parent
+ */
+function getReferenceNode(reference) {
+  return reference && reference.referenceNode ? reference.referenceNode : reference;
 }
 
 var isIE11 = isBrowser && !!(window.MSInputMethodContext && document.documentMode);
@@ -52765,8 +52789,8 @@ function getBoundingClientRect(element) {
 
   // subtract scrollbar size from sizes
   var sizes = element.nodeName === 'HTML' ? getWindowSizes(element.ownerDocument) : {};
-  var width = sizes.width || element.clientWidth || result.right - result.left;
-  var height = sizes.height || element.clientHeight || result.bottom - result.top;
+  var width = sizes.width || element.clientWidth || result.width;
+  var height = sizes.height || element.clientHeight || result.height;
 
   var horizScrollbar = element.offsetWidth - width;
   var vertScrollbar = element.offsetHeight - height;
@@ -52918,7 +52942,7 @@ function getBoundaries(popper, reference, padding, boundariesElement) {
   // NOTE: 1 DOM access here
 
   var boundaries = { top: 0, left: 0 };
-  var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
+  var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, getReferenceNode(reference));
 
   // Handle viewport case
   if (boundariesElement === 'viewport') {
@@ -53046,7 +53070,7 @@ function computeAutoPlacement(placement, refRect, popper, reference, boundariesE
 function getReferenceOffsets(state, popper, reference) {
   var fixedPosition = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
-  var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
+  var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, getReferenceNode(reference));
   return getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent, fixedPosition);
 }
 
@@ -53308,7 +53332,7 @@ function destroy() {
 
   this.disableEventListeners();
 
-  // remove the popper if user explicity asked for the deletion on destroy
+  // remove the popper if user explicitly asked for the deletion on destroy
   // do not use `remove` because IE11 doesn't support it
   if (this.options.removeOnDestroy) {
     this.popper.parentNode.removeChild(this.popper);
@@ -56235,27 +56259,42 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-6" }, [
             _vm.editMode
-              ? _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.info.name,
-                      expression: "info.name"
+              ? _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      "margin-top": "5px",
+                      "margin-bottom": "10px"
                     }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Asunto" },
-                  domProps: { value: _vm.info.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                  },
+                  [
+                    _c("label", { attrs: { for: "info.name" } }, [
+                      _vm._v("Nombre del Asunto")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.name,
+                          expression: "info.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Asunto" },
+                      domProps: { value: _vm.info.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.info, "name", $event.target.value)
+                        }
                       }
-                      _vm.$set(_vm.info, "name", $event.target.value)
-                    }
-                  }
-                })
+                    })
+                  ]
+                )
               : _c("h4", [_vm._v(_vm._s(_vm.info.name))])
           ]),
           _vm._v(" "),
@@ -56306,41 +56345,49 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.editMode
-        ? _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.info.description,
-                expression: "info.description"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", placeholder: "Contenido" },
-            domProps: { value: _vm.info.description },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        ? _c(
+            "div",
+            { staticStyle: { "margin-top": "5px", "margin-bottom": "10px" } },
+            [
+              _c("label", { attrs: { for: "info.description" } }, [
+                _vm._v("Contenido")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.info.description,
+                    expression: "info.description"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Contenido" },
+                domProps: { value: _vm.info.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.info, "description", $event.target.value)
+                  }
                 }
-                _vm.$set(_vm.info, "description", $event.target.value)
-              }
-            }
-          })
+              })
+            ]
+          )
         : _c("div", { staticClass: "card-body" }, [
             _vm._v(
-              "\n                " +
-                _vm._s(_vm.info.description) +
-                "\n            "
+              "\n            " + _vm._s(_vm.info.description) + "\n        "
             )
           ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-footer" }, [
         _c("small", [
           _vm._v(
-            "\n                    Fue Creado " +
+            "\n                Fue Creado " +
               _vm._s(_vm.since(_vm.info.created_at)) +
-              "\n                "
+              "\n            "
           )
         ])
       ])
@@ -56580,27 +56627,33 @@ var render = function() {
     },
     [
       _vm.editMode
-        ? _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.persona.picture,
-                expression: "persona.picture"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", placeholder: "Imagen Url" },
-            domProps: { value: _vm.persona.picture },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        ? _c("div", { staticStyle: { "margin-top": "5px" } }, [
+            _c("label", { attrs: { for: "persona.picture" } }, [
+              _vm._v("Imagen de la Persona")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.persona.picture,
+                  expression: "persona.picture"
                 }
-                _vm.$set(_vm.persona, "picture", $event.target.value)
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Imagen Url" },
+              domProps: { value: _vm.persona.picture },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.persona, "picture", $event.target.value)
+                }
               }
-            }
-          })
+            })
+          ])
         : _c("img", {
             staticClass: "card-img-top mx-auto d-block border border-dark",
             staticStyle: {
@@ -56614,27 +56667,35 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _vm.editMode
-          ? _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.persona.name,
-                  expression: "persona.name"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Nombre" },
-              domProps: { value: _vm.persona.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.persona, "name", $event.target.value)
-                }
-              }
-            })
+          ? _c("div", { staticStyle: { "margin-bottom": "10px" } }, [
+              _c("label", { attrs: { for: "persona.name" } }, [
+                _vm._v("Nombre de la persona")
+              ]),
+              _vm._v(" "),
+              _vm.editMode
+                ? _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.persona.name,
+                        expression: "persona.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Nombre" },
+                    domProps: { value: _vm.persona.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.persona, "name", $event.target.value)
+                      }
+                    }
+                  })
+                : _vm._e()
+            ])
           : _c("h5", { staticClass: "card-title" }, [
               _vm._v(" " + _vm._s(_vm.persona.name) + " ")
             ]),

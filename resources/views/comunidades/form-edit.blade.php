@@ -6,7 +6,7 @@
 	</div>
 
 	<div class="form-group row">
-		<label class="col-md col-form-label">Escribe tu codigo:</label>
+		<label class="col-md col-form-label">Url:</label>
 		<div class="col-md-8">
 			<input type="text" name="slug" value="{{ $dat->slug }}" class="form-control">
 		</div>
