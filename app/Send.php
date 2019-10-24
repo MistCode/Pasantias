@@ -16,9 +16,4 @@ class Send extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function notifications()
-    {
-        return $this->morphMany(DatabaseNotification::class, 'notifiable')->orderBy('created_at', 'desc');
-    }
-
 }

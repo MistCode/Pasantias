@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        @can('grupos.create')
+        @can('mensajeria.create')
             <a href="{{ route('mensajeria.create') }}" class="card title btn btn-outline-success border border-success">
                 <i class="fa fa-envelope"> Nuevo Mensaje</i>
             </a>
@@ -32,12 +32,12 @@
                         <form class="form-group" method="POST" action="{{ route('mensajeria.destroy', $correo->id) }}" enctype="multipart/form-data">
                         @method('DELETE')
                         @csrf
-                            @can('grupos.show')
+                            @can('mensajeria.show')
                                 <a href="{{ route('mensajeria.show', $correo->id) }}" class="btn btn-outline-primary">
                                     <i class="far fa-envelope-open"></i>
                                 </a>
                             @endcan
-                            @can('grupos.destroy')
+                            @can('mensajeria.destroy')
                                 <button type="submit" class="btn btn-outline-danger">
                                     <i class="fa fa-trash"></i>
                                 </button>

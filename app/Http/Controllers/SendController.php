@@ -57,7 +57,7 @@ class SendController extends Controller
             $correo->body = $request->input('body');
             $correo->save();
 
-        return redirect()->route('mensajeria.index');
+        return redirect()->route('mensajeria.index')->with('info', 'Mensaje enviado con éxito');
     }
 
     /**
@@ -69,7 +69,7 @@ class SendController extends Controller
     public function show(Send $correo, $id)
     {
         $correo = Send::find($id);
-        return view('mensajeria.mailbox', compact('correo'));
+        return view('mensajeria.show', compact('correo'));
         
     }
 
@@ -84,6 +84,6 @@ class SendController extends Controller
         $correo = Send::find($id);
         $correo->delete();
 
-        return redirect()->route('mensajeria.index');
+        return redirect()->route('mensajeria.index')->with('info', 'Mensaje eliminado con éxito');
     }
 }

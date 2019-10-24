@@ -98,31 +98,16 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="fa fa-bell"></i>
-                                    @if(auth()->user()->unreadNotifications->count() > 0)
-                                        <span class="badge badge-light">{{auth()->user()->unreadNotifications->count()}}</span>
-                                    @endif
+                        @can('mensajeria.index')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('mensajeria.index') }}">
+                                    <i class="fa fa-bell">
+                                        <span class="badge" style="background: red; position: relative; top: -15px; left: 2px;">
+                                             @include('mensajeria.unread')</i>
+                                        </span>
                                 </a>
-
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" style="color: darkgreen" href="{{url('markAsRead')}}">Mark as Read</a></li>
-
-                                    @foreach(auth()->user()->unreadNotifications as $unreadNotification)
-                                        <li>
-                                            <a class="dropdown-item" href="#">{{$unreadNotification->data['data']}} </a>
-                                        </li>
-                                    @endforeach
-
-                                    @foreach(auth()->user()->readNotifications as $readNotification)
-                                        <li style="background-color: lightgray;">
-                                            <a class="dropdown-item" href="#">{{$readNotification->data['data']}} </a>
-                                        </li>
-                                    @endforeach
-
-                                </ul>
                             </li>
+                        @endcan
                             
                             <li class="nav-item dropdown">
          
@@ -134,7 +119,7 @@
                                     <a class="dropdown-item" href="{{ url('/profile') }}">
                                         <i class="far fa-user-circle"></i> Perfil
                                     </a>
-                                    @can('grupos.index')
+                                    @can('mensajeria.index')
                                         <a class="dropdown-item"  href="{{ route('mensajeria.index') }}">
                                             <i class="far fa-envelope"></i>
                                                 {{ __('Mensajes') }}

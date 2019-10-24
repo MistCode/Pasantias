@@ -35,12 +35,12 @@
             <form class="form-group" method="POST" action="{{ route('mensajeria.destroy', $correo->id) }}" enctype="multipart/form-data">
             @method('DELETE')
             @csrf
-                @can('grupos.create')
+                @can('mensajeria.create')
                     <a href="{{ route('mensajeria.create') }}" class="offset-5 btn btn-success">
                         <i class="fa fa-envelope"></i>
                     </a>
                 @endcan
-                @can('grupos.destroy')
+                @can('mensajeria.destroy')
                     <button type="submit" class="btn btn-danger">
                         <i class="fa fa-trash"></i>
                     </button>
