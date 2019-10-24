@@ -14,6 +14,7 @@
 
 <script>
     import EventBus from '../../event-bus'
+    import push from 'push.js'
     import moment from 'moment'
 
     moment.locale('es');
@@ -28,7 +29,15 @@
         created(){
             EventBus.$on('msj-added', data => {
                 this.infos.push(data)
-                toastr.success('Mensaje Creado')
+                push.create('¡Mensaje Creado!',{
+                    body: "Se Creo Correctamente",
+                    icon: '../images/2110717_0.jpg',
+                    timeout: 4000,
+                    onClick: function () {
+                        window.focus();
+                        this.close();
+                    }
+                });
             })
         },
         mounted() {

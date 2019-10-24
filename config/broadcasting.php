@@ -27,6 +27,7 @@ return [
     | each available type of connection are provided inside this array.
     |
     */
+    //este es donde iba cluster => env('PUSHER_APP_CLUSTER')
 
     'connections' => [
 

@@ -19,6 +19,7 @@
 </template>
 <script>
 	import EventBus from '../../event-bus'
+    import push from 'push.js'
 	export default {
 		props:['persona','index'],
 		data(){
@@ -35,7 +36,15 @@
             .then((res) => {
             	console.log(res)
             	this.$emit('deletePersona');
-                toastr.success('Persona Eliminado')
+                push.create('¡Persona Eliminada!',{
+                    body: "Se Elimino Correctamente",
+                    icon: '../images/2110717_0.jpg',
+                    timeout: 4000,
+                    onClick: function () {
+                        window.focus();
+                        this.close();
+                    }
+                });
             })
             .catch(function(err){
                 console.log(err)
@@ -55,7 +64,15 @@
             	console.log(res)
 					this.editMode = false;
 	        		this.$emit('updatePersona', persona);
-                    toastr.success('Persona Editado')
+                        push.create('¡Persona Editada!',{
+                        body: "Se Edito Correctamente",
+                        icon: '../images/2110717_0.jpg',
+                        timeout: 4000,
+                        onClick: function () {
+                            window.focus();
+                            this.close();
+                        }
+                    });
         		})
                 .catch(function(err){
                     console.log(err)

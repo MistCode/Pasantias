@@ -12,6 +12,7 @@
 
 <script>
 	import EventBus from '../../event-bus'
+	import push from 'push.js'
 	export default{
 		data(){
 			return {
@@ -22,7 +23,15 @@
 		created(){
 			EventBus.$on('persona-added', data => {
 				this.personas.push(data)
-				toastr.success('Persona Creada')
+				push.create('¡Persona Creada!',{
+                    body: "Se Creo Correctamente",
+                    icon: '../images/2110717_0.jpg',
+                    timeout: 4000,
+                    onClick: function () {
+                        window.focus();
+                        this.close();
+                    }
+                });
 			})
 		},
 		mounted() {

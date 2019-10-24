@@ -62,7 +62,9 @@
                     @endcan
                     @can('comunidades.index')
 	                    <div class="nav-item dropdown">
-	                    <a class="nav-link dropdown-toggle" href="#" id="navbarComunity" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Comunidades</a>
+	                        <a class="nav-link dropdown-toggle" href="#" id="navbarComunity" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Comunidades
+                            </a>
 	                        <div class="dropdown-menu" aria-labelledby="navbarComunity">
 	                        	<a class="dropdown-item" href="{{ url('/comunidades') }}">Mis Comunidades</a>
 	                        @can('comunidades.create')
@@ -73,7 +75,7 @@
                     @endcan
                     @can('users.index')
 	                    <li class="nav-item">
-	                        <a class="nav-link" href="{{ route('users.index') }}">{{ __('Ususarios') }}</a>
+	                        <a class="nav-link" href="{{ route('users.index') }}">{{ __('Usuarios') }}</a>
 	                    </li>
                     @endcan
                     @can('roles.index')
@@ -97,6 +99,32 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="fa fa-bell"></i>
+                                    @if(auth()->user()->unreadNotifications->count() > 0)
+                                        <span class="badge badge-light">{{auth()->user()->unreadNotifications->count()}}</span>
+                                    @endif
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" style="color: darkgreen" href="{{url('markAsRead')}}">Mark as Read</a></li>
+
+                                    @foreach(auth()->user()->unreadNotifications as $unreadNotification)
+                                        <li>
+                                            <a class="dropdown-item" href="#">{{$unreadNotification->data['data']}} </a>
+                                        </li>
+                                    @endforeach
+
+                                    @foreach(auth()->user()->readNotifications as $readNotification)
+                                        <li style="background-color: lightgray;">
+                                            <a class="dropdown-item" href="#">{{$readNotification->data['data']}} </a>
+                                        </li>
+                                    @endforeach
+
+                                </ul>
+                            </li>
+                            
+                            <li class="nav-item dropdown">
          
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><img width="30px" height="30px" class="rounded-circle" src="{{ asset('images/ae/'.Auth::user()->avatar) }}">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -104,7 +132,14 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('/profile') }}">
-                                    <i class="far fa-user-circle"></i> Perfil</a>
+                                        <i class="far fa-user-circle"></i> Perfil
+                                    </a>
+                                    @can('grupos.index')
+                                        <a class="dropdown-item"  href="{{ route('mensajeria.index') }}">
+                                            <i class="far fa-envelope"></i>
+                                                {{ __('Mensajes') }}
+                                        </a>
+                                    @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -134,7 +169,6 @@
                     </div>
                 </div>
             @endif
-
                 @yield('content')
         </main>
     </div>

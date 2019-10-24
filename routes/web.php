@@ -11,8 +11,13 @@
 |
 MAIL_ENCRYPTION=tls
 */
+/*Route::get('/notification', function() {
+    $user = User::find(1);
+    $comment = Comment::withTrashed()->find(1);
+    $user->notify(new CommentCreated($comment));
+});
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 */
@@ -96,10 +101,18 @@ Route::middleware(['auth'])->group(function () {
 	Route::put('/grupos/{grupo}/personas/{id}', 'PersonaController@update');
 	Route::delete('/grupos/{grupo}/personas/{id}', 'PersonaController@destroy');
 
-	//route info
+	//Info
 	Route::resource('info', 'MensajeController');
 	Route::get('/comunidades/{comunidad}/info','MensajeController@index');
 	Route::post('/comunidades/{comunidad}/info','MensajeController@store');
 	Route::put('/comunidades/{comunidad}/info/{id}','MensajeController@update');
 	Route::delete('/comunidades/{comunidad}/info/{id}','MensajeController@destroy');
+
+	//Mensajes
+	Route::resource('mensajeria', 'SendController');
+	Route::get('/mensajeria', 'SendController@index')->name('mensajeria.index');
+	Route::get('/mensajeria/create', 'SendController@create')->name('mensajeria.create');
+	Route::post('/mensajeria/create', 'SendController@store')->name('mensajeria.store');
+	Route::get('/mensajeria/{id}', 'SendController@show')->name('mensajeria.show');
+	Route::delete('/mensajeria/{id}', 'SendController@destroy')->name('mensajeria.destroy');
 });

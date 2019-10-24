@@ -37,6 +37,7 @@
 
 <script>
 	import EventBus from '../../event-bus'
+    import push from 'push.js'
     import moment from 'moment'
 
     moment.locale('es');
@@ -57,7 +58,15 @@
             .then((res) => {
             	console.log(res)
             	this.$emit('deleteInfo');
-                toastr.success('Mensaje Eliminado')
+                push.create('¡Mensaje Eliminado!',{
+                    body: "Se Elimino Correctamente",
+                    icon: '../images/2110717_0.jpg',
+                    timeout: 4000,
+                    onClick: function () {
+                        window.focus();
+                        this.close();
+                    }
+                });
             })
             .catch(function(err){
                 console.log(err)
@@ -77,7 +86,15 @@
             	console.log(res)
 					this.editMode = false;
 	        		this.$emit('updateInfo', info);
-                    toastr.success('Mensaje Editado')
+                    push.create('¡Mensaje Editado!',{
+                        body: "Se Edito Correctamente",
+                        icon: '../images/2110717_0.jpg',
+                        timeout: 4000,
+                        onClick: function () {
+                            window.focus();
+                            this.close();
+                        }
+                    });
         		})
                 .catch(function(err){
                     console.log(err)

@@ -158,5 +158,27 @@ class PermissionsTableSeeder extends Seeder
             'slug' => 'info.destroy',
             'description' => 'Eliminar cualquier Mensaje del sistema',
         ]);
+
+        //Send
+        Permission::create([
+            'name' => 'Navegar Mensajes',
+            'slug' => 'mensajeria.index',
+            'description' => 'Lista y Navega todos los Mensajes del sistema',
+        ]);
+        Permission::create([
+            'name' => 'Ver detalle del Mensaje',
+            'slug' => 'mensajeria.show',
+            'description' => 'Ver en detalle cada Mensaje del sistema',
+        ]);
+        Permission::create([
+            'name' => 'Creación de un Mensaje',
+            'slug' => 'mensajeria.create',
+            'description' => 'Editar cualquier dato de un Mensaje del sistema',
+        ]);
+        Permission::create([
+            'name' => 'Eliminar Mensaje',
+            'slug' => 'mensajeria.destroy',
+            'description' => 'Eliminar cualquier Mensaje del sistema',
+        ]);
     }
 }

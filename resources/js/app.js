@@ -21,17 +21,20 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+//Persona
 Vue.component('lista-de-personas', require('./components/personas/list.vue').default);
 Vue.component('modal-button', require('./components/personas/modal-button.vue').default);
 Vue.component('create-form-person', require('./components/personas/add.vue').default);
 Vue.component('contenido-person', require('./components/personas/contenido.vue').default);
+
+//Spiner
 Vue.component('spinner', require('./components/widgets/Spinner.vue').default);
 
+//Msj
 Vue.component('listando', require('./components/msj/Read.vue').default);
 Vue.component('formulario', require('./components/msj/Create.vue').default);
 Vue.component('boton', require('./components/msj/Click.vue').default);
 Vue.component('edita', require('./components/msj/Msj-edit.vue').default);
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
