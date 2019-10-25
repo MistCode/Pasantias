@@ -5,6 +5,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;	
 use App\Notifications\UserResetPassword;
+use Cache;
 class User extends Authenticatable implements MustVerifyEmail
 {	
     use Notifiable, HasRolesAndPermissions;	
@@ -77,5 +78,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new Notifications\VerifyEmail);
+    }
+
+    //Checar si el usuario esta online
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
     }
 }

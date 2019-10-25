@@ -10,11 +10,12 @@
                 </div>
 
                 <div class="panel-body">
-                    <table id="myTable" class="table table-striped table-hover shadow" style="margin-bottom: 10px;margin-top: 10px;">
+                    <table id="myTable" class="table table-striped table-hover table-dark shadow" style="margin-bottom: 10px;margin-top: 10px;">
                         <thead class="thead-dark">
                             <tr>
                                 <th width="10px">ID</th>
                                 <th>Nombre</th>
+                                <th>Estado</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                         </thead>
@@ -23,6 +24,17 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
+                                <td>
+                                    @if($user->isOnline())
+                                        <li class="text-success">
+                                            Online
+                                        </li>
+                                    @else
+                                        <li class="text-muted">
+                                            Offline
+                                        </li>
+                                    @endif
+                                </td>
                                 @can('users.show')
                                 <td width="10px">
                                     <a href="{{ route('users.show', $user->id) }}" 
